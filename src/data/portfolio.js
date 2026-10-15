@@ -15,10 +15,10 @@ export const profile = {
 
 // Replace these placeholders with your real details.
 export const contact = {
-  email: 'your.email@example.com',
-  phone: '+91 00000 00000',
-  linkedin: 'https://www.linkedin.com/in/your-profile',
-  github: 'https://github.com/your-username',
+  email: 'varshith@uniquehire.co.in',
+  phone: '+91 7285942101',
+  linkedin: 'https://www.linkedin.com/in/varshith-varala-533aa7370',
+  github: 'https://github.com/varshithvarala18',
 };
 
 export const navLinks = [
