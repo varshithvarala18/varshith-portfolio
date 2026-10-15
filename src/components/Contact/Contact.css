@@ -136,3 +136,16 @@
     justify-self: stretch;
   }
 }
+
+.contact-channels > li {
+  display: flex;
+}
+
+.contact-channels .contact-channel {
+  width: 100%;
+}
+
+.contact-form {
+  border-color: color-mix(in srgb, var(--accent) 18%, var(--border));
+  box-shadow: var(--shadow-hover), 0 0 60px -36px var(--glow-strong);
+}

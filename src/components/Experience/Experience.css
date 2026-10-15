@@ -1,22 +1,37 @@
-.timeline {
+.timeline-wrap {
   position: relative;
-  margin: 0;
-  padding: 0 0 0 32px;
-  list-style: none;
+  padding-left: 44px;
+  perspective: 1200px;
 }
 
-.timeline::before {
-  content: '';
+.timeline-track {
   position: absolute;
-  left: 7px;
-  top: 8px;
-  bottom: 8px;
+  left: 11px;
+  top: 10px;
+  bottom: 10px;
   width: 2px;
+  border-radius: 2px;
   background: var(--border);
+  overflow: hidden;
+}
+
+.timeline-progress {
+  position: absolute;
+  inset: 0;
+  transform-origin: top;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  box-shadow: 0 0 12px var(--glow-strong);
+}
+
+.timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .timeline-item {
   position: relative;
+  transform-style: preserve-3d;
 }
 
 .timeline-item + .timeline-item {
@@ -25,13 +40,36 @@
 
 .timeline-marker {
   position: absolute;
-  left: -32px;
-  top: 30px;
-  width: 16px;
-  height: 16px;
+  left: -44px;
+  top: 28px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: var(--bg);
-  border: 3px solid var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+  box-shadow: 0 0 0 4px var(--accent-soft), 0 0 20px -2px var(--glow-strong);
+}
+
+.timeline-marker-core {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: timeline-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes timeline-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 var(--glow-strong);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 6px transparent;
+  }
 }
 
 .experience-card {
@@ -106,13 +144,24 @@
 }
 
 @media (max-width: 600px) {
-  .timeline {
-    padding-left: 0;
+  .timeline-wrap {
+    padding-left: 30px;
   }
 
-  .timeline::before,
+  .timeline-track {
+    left: 7px;
+  }
+
   .timeline-marker {
-    display: none;
+    left: -30px;
+    width: 16px;
+    height: 16px;
+    top: 24px;
+  }
+
+  .timeline-marker-core {
+    width: 6px;
+    height: 6px;
   }
 
   .experience-card {

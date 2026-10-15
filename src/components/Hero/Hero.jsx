@@ -1,9 +1,13 @@
+import { lazy } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Download, Mail, MapPin } from 'lucide-react';
 import { contact, profile } from '../../data/portfolio.js';
 import { GithubIcon, LinkedinIcon } from '../common/BrandIcons.jsx';
+import SceneSlot from '../common/SceneSlot.jsx';
 import CodeCard from './CodeCard.jsx';
 import './Hero.css';
+
+const HeroScene = lazy(() => import('../three/HeroScene.jsx'));
 
 export default function Hero() {
   const reduceMotion = useReducedMotion();
@@ -18,6 +22,7 @@ export default function Hero() {
 
   return (
     <section id="top" className="hero" aria-labelledby="hero-heading">
+      <div className="hero-backdrop" aria-hidden="true" />
       <div className="container hero-grid">
         <div className="hero-content">
           <motion.p className="hero-status" {...fade(0)}>
@@ -45,7 +50,7 @@ export default function Hero() {
               View Projects
               <ArrowRight size={16} aria-hidden="true" />
             </a>
-            <a href={profile.resume} download className="btn btn-secondary">
+            <a href={profile.resume} download="Varshith_Varala_Resume.pdf" className="btn btn-secondary">
               <Download size={16} aria-hidden="true" />
               Download Resume
             </a>
@@ -78,12 +83,15 @@ export default function Hero() {
           {...(reduceMotion
             ? {}
             : {
-                initial: { opacity: 0, y: 20 },
-                animate: { opacity: 1, y: 0 },
-                transition: { duration: 0.6, ease: 'easeOut', delay: 0.2 },
+                initial: { opacity: 0, scale: 0.96 },
+                animate: { opacity: 1, scale: 1 },
+                transition: { duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.25 },
               })}
         >
-          <CodeCard />
+          <div className="hero-visual-glow" aria-hidden="true" />
+          <SceneSlot className="hero-scene" rootMargin="0px" fallback={<CodeCard />}>
+            {(animate) => <HeroScene animate={animate} />}
+          </SceneSlot>
         </motion.div>
       </div>
     </section>

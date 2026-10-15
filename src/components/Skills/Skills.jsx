@@ -1,6 +1,7 @@
 import { skillGroups } from '../../data/portfolio.js';
 import Section from '../common/Section.jsx';
 import Reveal from '../common/Reveal.jsx';
+import TiltCard from '../common/TiltCard.jsx';
 import Icon from '../common/Icon.jsx';
 import './Skills.css';
 
@@ -15,20 +16,25 @@ export default function Skills() {
     >
       <div className="skills-grid">
         {skillGroups.map((group, i) => (
-          <Reveal key={group.title} className="card card-hover skill-card" delay={(i % 3) * 0.05}>
-            <div className="skill-card-header">
-              <span className="icon-box">
-                <Icon name={group.icon} size={20} />
-              </span>
-              <h3>{group.title}</h3>
-            </div>
-            <ul className="skill-tags" aria-label={`${group.title} skills`}>
-              {group.skills.map((skill) => (
-                <li key={skill} className="tag">
-                  {skill}
-                </li>
-              ))}
-            </ul>
+          <Reveal key={group.title} className="skills-grid-item" delay={(i % 3) * 0.06}>
+            <TiltCard className="card skill-card">
+              <div className="skill-card-header tilt-pop">
+                <span className="icon-box">
+                  <Icon name={group.icon} size={20} />
+                </span>
+                <h3>{group.title}</h3>
+                <span className="skill-card-count" aria-hidden="true">
+                  {String(group.skills.length).padStart(2, '0')}
+                </span>
+              </div>
+              <ul className="skill-tags" aria-label={`${group.title} skills`}>
+                {group.skills.map((skill) => (
+                  <li key={skill} className="tag">
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </TiltCard>
           </Reveal>
         ))}
       </div>

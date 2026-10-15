@@ -2,12 +2,17 @@ import { ChevronRight, Check } from 'lucide-react';
 import { projects } from '../../data/portfolio.js';
 import Section from '../common/Section.jsx';
 import Reveal from '../common/Reveal.jsx';
+import TiltCard from '../common/TiltCard.jsx';
 import Icon from '../common/Icon.jsx';
+import ProjectVisual from './ProjectVisuals.jsx';
 import './Projects.css';
+import './ProjectVisuals.css';
 
 function ProjectCard({ project }) {
   return (
-    <article className="card card-hover project-card">
+    <TiltCard as="article" className="card project-card" max={4}>
+      <ProjectVisual type={project.visual} />
+
       <header className="project-header">
         <span className="icon-box">
           <Icon name={project.icon} size={20} />
@@ -17,6 +22,16 @@ function ProjectCard({ project }) {
 
       <h3 className="project-title">{project.title}</h3>
       <p className="project-description">{project.description}</p>
+
+      {project.highlights && (
+        <ul className="project-highlights" aria-label="Highlights">
+          {project.highlights.map((item) => (
+            <li key={item} className="tag tag-accent">
+              {item}
+            </li>
+          ))}
+        </ul>
+      )}
 
       {project.flow && (
         <ol className="project-flow" aria-label="Authorization flow">
@@ -48,7 +63,7 @@ function ProjectCard({ project }) {
           </li>
         ))}
       </ul>
-    </article>
+    </TiltCard>
   );
 }
 

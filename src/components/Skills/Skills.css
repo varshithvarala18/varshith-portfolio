@@ -1,22 +1,46 @@
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
+  perspective: 1200px;
+}
+
+.skills-grid-item {
+  display: flex;
 }
 
 .skill-card {
+  width: 100%;
   padding: 24px;
+}
+
+/* Thin accent edge along the top of each card. */
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 55%, transparent), transparent);
 }
 
 .skill-card-header {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .skill-card-header h3 {
+  flex: 1;
   font-size: 1.1rem;
+}
+
+.skill-card-count {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-subtle);
 }
 
 .skill-tags {
@@ -25,9 +49,14 @@
   gap: 8px;
 }
 
+.skill-card:hover .tag {
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+  color: var(--text);
+}
+
 @media (max-width: 960px) {
   .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

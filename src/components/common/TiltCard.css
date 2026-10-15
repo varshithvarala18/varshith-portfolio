@@ -1,0 +1,39 @@
+.tilt-card {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: auto;
+}
+
+.tilt-card.is-interactive {
+  will-change: transform;
+}
+
+.tilt-card > :not(.tilt-card-glow) {
+  position: relative;
+  z-index: 1;
+}
+
+.tilt-card-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.tilt-card.is-interactive:hover .tilt-card-glow {
+  opacity: 1;
+}
+
+.tilt-card.is-interactive:hover {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  box-shadow: var(--shadow-hover), 0 0 40px -18px var(--glow-strong);
+}
+
+/* Children marked .tilt-pop float above the card surface while tilting. */
+.tilt-card.is-interactive .tilt-pop {
+  transform: translateZ(28px);
+  transition: transform 300ms var(--ease-out);
+}

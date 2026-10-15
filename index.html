@@ -13,7 +13,7 @@
       content="Varshith, Software Engineer, Java Developer, Spring Boot, Microservices, REST APIs, Hibernate, JPA, PostgreSQL, Cards and Payments, ISO 8583, VisionPLUS, Hyderabad"
     />
     <meta name="author" content="Varshith" />
-    <meta name="theme-color" content="#0b0d12" />
+    <meta name="theme-color" content="#06090f" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Varshith | Associate Software Engineer" />
     <meta
@@ -29,11 +29,11 @@
       rel="stylesheet"
     />
     <script>
-      // Apply the saved (or system) theme before first paint to avoid a flash.
+      // Apply the saved theme (dark by default) before first paint to avoid a flash.
       (function () {
         try {
           var t = localStorage.getItem('theme');
-          if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+          if (t !== 'light') t = 'dark';
           document.documentElement.dataset.theme = t;
         } catch (e) {
           document.documentElement.dataset.theme = 'dark';

@@ -1,10 +1,101 @@
+/* ---------- 3D architecture explorer ---------- */
+.vp-explorer {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  padding: 24px 28px;
+  overflow: hidden;
+}
+
+.vp-stage {
+  position: relative;
+  height: 420px;
+}
+
+.vp-scene {
+  position: absolute;
+  inset: 0;
+}
+
+.vp-panel-label {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.vp-modules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.vp-module-btn {
+  min-width: 62px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition), background-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.vp-module-btn:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.vp-module-btn[aria-pressed='true'] {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: 0 0 20px -6px var(--glow-strong);
+}
+
+.vp-active {
+  min-height: 160px;
+  margin-top: 22px;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--accent);
+  background: color-mix(in srgb, var(--bg) 55%, transparent);
+}
+
+.vp-active-name {
+  margin-top: 12px;
+  font-size: 1.1rem;
+}
+
+.vp-active-text {
+  margin-top: 8px;
+  font-size: 0.93rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Module cards ---------- */
 .vp-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
+  margin-top: 28px;
+  perspective: 1200px;
+}
+
+.vp-grid-item {
+  display: flex;
 }
 
 .vp-card {
+  width: 100%;
   padding: 22px;
 }
 
@@ -33,12 +124,27 @@
 
 @media (max-width: 1024px) {
   .vp-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .vp-explorer {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .vp-stage {
+    height: 320px;
   }
 }
 
 @media (max-width: 560px) {
   .vp-grid {
     grid-template-columns: 1fr;
+  }
+
+  .vp-stage {
+    height: 270px;
   }
 }

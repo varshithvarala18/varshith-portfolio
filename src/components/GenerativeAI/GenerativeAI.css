@@ -1,0 +1,215 @@
+.ai-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 32px;
+}
+
+/* ---------- Orbit visual ---------- */
+.ai-orbit-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.ai-orbit {
+  --size: 520px;
+  --r-inner: 112px;
+  --r-outer: 226px;
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  flex-shrink: 0;
+}
+
+.ai-orbit-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px dashed color-mix(in srgb, var(--accent) 28%, transparent);
+  transform: translate(-50%, -50%);
+}
+
+.ai-orbit-line-inner {
+  width: calc(var(--r-inner) * 2);
+  height: calc(var(--r-inner) * 2);
+}
+
+.ai-orbit-line-outer {
+  width: calc(var(--r-outer) * 2);
+  height: calc(var(--r-outer) * 2);
+  border-style: solid;
+  border-color: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.ai-ring {
+  position: absolute;
+  inset: 0;
+  animation: ai-spin 90s linear infinite;
+}
+
+.ai-ring-outer {
+  animation-duration: 140s;
+  animation-direction: reverse;
+}
+
+.ai-chip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: rotate(var(--angle)) translateX(var(--r-inner)) rotate(calc(var(--angle) * -1));
+}
+
+.ai-ring-outer .ai-chip {
+  transform: rotate(var(--angle)) translateX(var(--r-outer)) rotate(calc(var(--angle) * -1));
+}
+
+/* Counter-rotates against the ring so labels stay upright. */
+.ai-chip-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--glass);
+  font-size: 0.76rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--text-muted);
+  box-shadow: 0 6px 18px -10px rgba(0, 0, 0, 0.5);
+  translate: -50% -50%;
+  animation: ai-spin 90s linear infinite reverse;
+  transition: color var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.ai-ring-outer .ai-chip-inner {
+  animation-duration: 140s;
+  animation-direction: normal;
+}
+
+.ai-orbit:hover .ai-ring,
+.ai-orbit:hover .ai-chip-inner {
+  animation-play-state: paused;
+}
+
+.ai-chip-inner:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 18px -4px var(--glow-strong);
+}
+
+@keyframes ai-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ai-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 220px;
+  height: 220px;
+  transform: translate(-50%, -50%);
+}
+
+.ai-core-scene {
+  position: absolute;
+  inset: 0;
+}
+
+.ai-core-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--glass);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  box-shadow: 0 0 30px -6px var(--glow-strong);
+  pointer-events: none;
+}
+
+/* ---------- Topic groups ---------- */
+.ai-groups {
+  display: grid;
+  gap: 14px;
+  perspective: 1200px;
+}
+
+.ai-group-item {
+  display: flex;
+}
+
+.ai-group {
+  width: 100%;
+  padding: 18px 20px;
+}
+
+.ai-group-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ai-group-head .icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+}
+
+.ai-group-head h3 {
+  font-size: 1rem;
+}
+
+.ai-group-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+@media (max-width: 1100px) {
+  .ai-orbit {
+    --size: 460px;
+    --r-inner: 100px;
+    --r-outer: 200px;
+  }
+
+  .ai-orbit .ai-chip-inner {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 960px) {
+  .ai-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Small screens: keep the core, drop the orbiting labels (listed in the groups). */
+@media (max-width: 560px) {
+  .ai-orbit {
+    --size: 260px;
+    --r-inner: 92px;
+    --r-outer: 124px;
+  }
+
+  .ai-ring {
+    display: none;
+  }
+
+  .ai-core {
+    width: 220px;
+    height: 220px;
+  }
+}

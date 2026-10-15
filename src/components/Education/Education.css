@@ -2,21 +2,22 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 28px;
+  padding: 24px 26px;
 }
 
 .education-icon {
   width: 52px;
   height: 52px;
-  border-radius: 12px;
+  border-radius: 14px;
 }
 
 .education-body {
   flex: 1;
+  min-width: 0;
 }
 
 .education-body h3 {
-  font-size: 1.2rem;
+  font-size: 1.12rem;
 }
 
 .education-institution {
@@ -24,14 +25,31 @@
   color: var(--text-muted);
 }
 
+.education-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.education-duration {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-subtle);
+  white-space: nowrap;
+}
+
 .education-score {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 14px;
+  padding: 6px 12px;
   border-radius: 999px;
   font-weight: 600;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   color: var(--accent);
   background: var(--accent-soft);
   white-space: nowrap;
@@ -41,6 +59,13 @@
   .education-card {
     flex-direction: column;
     align-items: flex-start;
-    padding: 22px;
+    gap: 14px;
+    padding: 20px;
+  }
+
+  .education-side {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
   }
 }

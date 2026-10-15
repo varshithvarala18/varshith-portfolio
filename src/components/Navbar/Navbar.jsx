@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Download, Menu, Moon, Sun, X } from 'lucide-react';
 import { navLinks, profile } from '../../data/portfolio.js';
 import useTheme from '../../hooks/useTheme.js';
@@ -10,6 +11,7 @@ const sectionIds = navLinks.map((link) => link.id);
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const active = useActiveSection(sectionIds);
+  const reduceMotion = useReducedMotion();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -24,7 +26,7 @@ export default function Navbar() {
   useEffect(() => {
     if (!open) return undefined;
     const onKey = (e) => e.key === 'Escape' && setOpen(false);
-    const onResize = () => window.innerWidth > 1024 && setOpen(false);
+    const onResize = () => window.innerWidth > 1140 && setOpen(false);
     window.addEventListener('keydown', onKey);
     window.addEventListener('resize', onResize);
     return () => {
@@ -54,12 +56,20 @@ export default function Navbar() {
                 aria-current={active === link.id ? 'true' : undefined}
                 onClick={() => setOpen(false)}
               >
-                {link.label}
+                {active === link.id && (
+                  <motion.span
+                    layoutId="nav-active"
+                    className="navbar-indicator"
+                    transition={reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 380, damping: 32 }}
+                    aria-hidden="true"
+                  />
+                )}
+                <span className="navbar-link-label">{link.label}</span>
               </a>
             </li>
           ))}
           <li className="navbar-mobile-resume">
-            <a href={profile.resume} download className="btn btn-primary">
+            <a href={profile.resume} download="Varshith_Varala_Resume.pdf" className="btn btn-primary">
               <Download size={16} aria-hidden="true" />
               Download Resume
             </a>
@@ -76,7 +86,7 @@ export default function Navbar() {
           >
             {isDark ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
           </button>
-          <a href={profile.resume} download className="btn btn-secondary navbar-resume">
+          <a href={profile.resume} download="Varshith_Varala_Resume.pdf" className="btn btn-secondary navbar-resume">
             <Download size={16} aria-hidden="true" />
             Resume
           </a>

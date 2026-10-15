@@ -6,6 +6,7 @@ import Experience from './components/Experience/Experience.jsx';
 import Projects from './components/Projects/Projects.jsx';
 import Domain from './components/Domain/Domain.jsx';
 import VisionPlus from './components/VisionPlus/VisionPlus.jsx';
+import GenerativeAI from './components/GenerativeAI/GenerativeAI.jsx';
 import Education from './components/Education/Education.jsx';
 import Contact from './components/Contact/Contact.jsx';
 import Footer from './components/Footer/Footer.jsx';
@@ -25,6 +26,7 @@ export default function App() {
         <Projects />
         <Domain />
         <VisionPlus />
+        <GenerativeAI />
         <Education />
         <Contact />
       </main>
