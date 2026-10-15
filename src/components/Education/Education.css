@@ -1,0 +1,46 @@
+.education-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 28px;
+}
+
+.education-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+}
+
+.education-body {
+  flex: 1;
+}
+
+.education-body h3 {
+  font-size: 1.2rem;
+}
+
+.education-institution {
+  margin-top: 6px;
+  color: var(--text-muted);
+}
+
+.education-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--accent);
+  background: var(--accent-soft);
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .education-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 22px;
+  }
+}

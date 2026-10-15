@@ -1,0 +1,147 @@
+/* ---------- Transaction flow ---------- */
+.payment-flow {
+  padding: 28px;
+}
+
+.payment-flow-label {
+  margin-bottom: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.payment-flow-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.payment-flow-step {
+  position: relative;
+}
+
+.payment-flow-index {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.payment-flow-title {
+  font-weight: 600;
+}
+
+.payment-flow-detail {
+  margin-top: 4px;
+  font-size: 0.87rem;
+  color: var(--text-muted);
+}
+
+.payment-flow-arrow {
+  position: absolute;
+  top: 26px;
+  right: -22px;
+  color: var(--text-subtle);
+}
+
+.payment-flow-note {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--text-subtle);
+}
+
+/* ---------- Topic groups ---------- */
+.domain-groups {
+  display: grid;
+  gap: 40px;
+  margin-top: 48px;
+}
+
+.domain-group-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.domain-group-header .icon-box {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+}
+
+.domain-group-header h3 {
+  font-size: 1.15rem;
+}
+
+.domain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.domain-card {
+  padding: 20px;
+  border-left: 3px solid var(--accent);
+}
+
+.domain-card h4 {
+  font-size: 1rem;
+}
+
+.domain-card p {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 960px) {
+  .payment-flow-steps {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .payment-flow-step {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    column-gap: 12px;
+    padding: 12px 0;
+  }
+
+  .payment-flow-step + .payment-flow-step {
+    border-top: 1px dashed var(--border);
+  }
+
+  .payment-flow-index {
+    grid-row: span 2;
+    margin: 0;
+    padding-top: 2px;
+  }
+
+  .payment-flow-arrow {
+    display: none;
+  }
+
+  .domain-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .payment-flow {
+    padding: 20px;
+  }
+
+  .domain-grid {
+    grid-template-columns: 1fr;
+  }
+}
