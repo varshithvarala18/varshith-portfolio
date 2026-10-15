@@ -3,5 +3,14 @@
   "framework": "vite",
   "installCommand": "npm install",
   "buildCommand": "npm run build",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "headers": [
+    {
+      "source": "/Varshith_Varala_Resume.pdf",
+      "headers": [
+        { "key": "Content-Disposition", "value": "attachment; filename=\"Varshith_Varala_Resume.pdf\"" },
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    }
+  ]
 }

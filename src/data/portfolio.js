@@ -10,7 +10,7 @@ export const profile = {
   summary:
     'Associate Software Engineer with 1.5 years of experience building backend applications and REST APIs using Java, Spring Boot, Hibernate/JPA, PostgreSQL, and Microservices.',
   location: 'Hyderabad, India',
-  resume: '/resume.pdf',
+  resume: '/Varshith_Varala_Resume.pdf',
 };
 
 // Replace these placeholders with your real details.
